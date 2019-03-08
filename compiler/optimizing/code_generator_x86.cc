@@ -8260,6 +8260,7 @@ class JumpTableRIPFixup : public RIPFixup {
 void CodeGeneratorX86::Finalize(CodeAllocator* allocator) {
   // Generate the constant area if needed.
   X86Assembler* assembler = GetAssembler();
+
   if (!assembler->IsConstantAreaEmpty() || !fixups_to_jump_tables_.empty()) {
     // Align to 4 byte boundary to reduce cache misses, as the data is 4 and 8
     // byte values.
@@ -8429,6 +8430,19 @@ void LocationsBuilderX86::VisitIntermediateAddress(HIntermediateAddress* instruc
 void InstructionCodeGeneratorX86::VisitIntermediateAddress(HIntermediateAddress* instruction
                                                            ATTRIBUTE_UNUSED) {
   LOG(FATAL) << "Unreachable";
+}
+
+bool LocationsBuilderX86::CpuHasAvxFeatureFlag() {
+  return codegen_->GetInstructionSetFeatures().HasAVX();
+}
+bool LocationsBuilderX86::CpuHasAvx2FeatureFlag() {
+  return codegen_->GetInstructionSetFeatures().HasAVX2();
+}
+bool InstructionCodeGeneratorX86::CpuHasAvxFeatureFlag() {
+  return codegen_->GetInstructionSetFeatures().HasAVX();
+}
+bool InstructionCodeGeneratorX86::CpuHasAvx2FeatureFlag() {
+  return codegen_->GetInstructionSetFeatures().HasAVX2();
 }
 
 #undef __

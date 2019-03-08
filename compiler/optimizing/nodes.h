@@ -1529,7 +1529,7 @@ class HLoopInformationOutwardIterator : public ValueObject {
 
 #if defined(ART_ENABLE_CODEGEN_x86) || defined(ART_ENABLE_CODEGEN_x86_64)
 #define FOR_EACH_CONCRETE_INSTRUCTION_X86_COMMON(M)                     \
-  M(X86AndNot, Instruction)                                                \
+  M(X86AndNot, Instruction)                                             \
   M(X86MaskOrResetLeastSetBit, Instruction)
 #else
 #define FOR_EACH_CONCRETE_INSTRUCTION_X86_COMMON(M)
