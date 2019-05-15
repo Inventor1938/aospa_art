@@ -217,7 +217,7 @@ art_cc_binary {
     target: {
         android: {
             lto: {
-                 thin: true,
+                thin: true,
             },
             static_libs: [
                 "libz",

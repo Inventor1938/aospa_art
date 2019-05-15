@@ -1,5 +1,5 @@
 //
-// Copyright (C) 2018 The Android Open Source Project
+// Copyright (C) 2014 The Android Open Source Project
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -14,20 +14,16 @@
 // limitations under the License.
 //
 
+// --- dexfuzz.jar ----------------
 java_library_host {
-    name: "class2greylistlib",
+    name: "dexfuzz",
     srcs: ["src/**/*.java"],
-    static_libs: [
-        "commons-cli-1.2",
-        "apache-bcel",
-        "guava",
-    ],
+    manifest: "manifest.txt",
 }
 
-java_binary_host {
-    name: "class2greylist",
-    manifest: "src/class2greylist.mf",
-    static_libs: [
-        "class2greylistlib",
-    ],
+// --- dexfuzz script ----------------
+sh_binary_host {
+    name: "dexfuzz-script",
+    src: "dexfuzz",
+    filename_from_src: true,
 }
