@@ -1858,8 +1858,6 @@ ENTRY art_quick_instrumentation_entry
     mov   r12, r0        @ r12 holds reference to code
     ldr   r0, [sp, #4]   @ restore r0
     RESTORE_SAVE_REFS_AND_ARGS_FRAME
-    adr   lr, art_quick_instrumentation_exit + /* thumb mode */ 1
-                         @ load art_quick_instrumentation_exit into lr in thumb mode
     REFRESH_MARKING_REGISTER
     bx    r12            @ call method with lr set to art_quick_instrumentation_exit
 .Ldeliver_instrumentation_entry_exception:
