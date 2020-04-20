@@ -370,6 +370,13 @@ class OatFile {
     return uncompressed_dex_files_ == nullptr;
   }
 
+  // Returns whether an image (e.g. app image) is required to safely execute this OAT file.
+  inline bool RequiresImage() const {
+    // We currently require images only for speed profile and everything profile.
+    return GetCompilerFilter() == CompilerFilter::Filter::kSpeedProfile ||
+           GetCompilerFilter() == CompilerFilter::Filter::kEverythingProfile;
+  }
+
  protected:
   OatFile(const std::string& filename, bool executable);
 
