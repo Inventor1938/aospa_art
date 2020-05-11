@@ -27,7 +27,6 @@ namespace art {
 class InductionVarRange;
 
 static const bool kSuperblockClonerLogging = false;
-static const bool kSuperblockClonerVerify = false;
 
 // Represents an edge between two HBasicBlocks.
 //
